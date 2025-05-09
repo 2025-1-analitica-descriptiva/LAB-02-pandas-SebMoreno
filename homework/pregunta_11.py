@@ -22,3 +22,8 @@ def pregunta_11():
     38   38      d,e
     39   39    a,d,f
     """
+    import pandas as pd
+
+    df = pd.read_csv("files/input/tbl1.tsv", sep="\t")
+    df = df.groupby("c0")["c4"].agg(lambda x: x.astype(str).sort_values().str.cat(sep=",")).reset_index()
+    return df
